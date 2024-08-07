@@ -66,6 +66,13 @@ Notes:
 - Ensure that your internet connection is stable during the scraping process.
 - The program might take some time to run depending on the number of comments and replies on the video.
 
+Future Features:
+------
+1. Modern & Improved UI
+2. Multiple API Key handling. Once an API Key reached its daily limit, switch to next key.
+3. Output file names to contain YT video title instead of video id.
+4. Customisable outputs. (Chose columns and column order, create templates, etc.)
+
 Contact:
 --------
 For any issues or questions, please contact me.
