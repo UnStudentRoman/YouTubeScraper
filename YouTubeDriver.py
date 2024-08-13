@@ -1,4 +1,3 @@
-import os
 import time
 import pandas as pd
 from googleapiclient.discovery import build
@@ -15,7 +14,7 @@ class YTDriver:
         self.users_ids = set()
         self.users = []
 
-    def get_api_key(self, key=None) -> str:
+    def get_api_key(self, key) -> str:
         if key:
             self.api_key = key
             return 'Youtube API Key successfully retrieved.'
@@ -30,18 +29,18 @@ class YTDriver:
             self.video_id = video[video.index('www.youtube.com/watch?v=') + len('www.youtube.com/watch?v='):]
 
         except ValueError:
-            print('URL invalid. Please make sure URL format is one of the below:'
+            logging.warning('URL invalid. Please make sure URL format is one of the below:'
                   '\n"https://www.youtube.com/watch?v=<VIDEO_ID>"'
                   '\n"http://www.youtube.com/watch?v=<VIDEO_ID>"'
                   '\n"www.youtube.com/watch?v=<VIDEO_ID>"')
         return None
 
-    def yt_service_obj(self, key) -> None:
+    def yt_service_obj(self, key=None) -> None:
         """
         Build the YouTube service object
         :return:
         """
-        print(self.get_api_key(key))  # Try to retrieve API Key
+        logging.info(self.get_api_key(key))  # Try to retrieve API Key
 
         # Build YouTube service object
         self.service_obj = build('youtube', 'v3', developerKey=self.api_key)
