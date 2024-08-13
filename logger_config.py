@@ -1,14 +1,5 @@
 import logging
-
-logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
-
-
-# Function to add handler to the logger
-def add_qt_handler(text_edit):
-    text_edit_handler = QTextEditLogger(text_edit)
-    text_edit_handler.setFormatter(logging.Formatter('%(asctime)s - %(message)s'))
-    logger.addHandler(text_edit_handler)
+from PyQt5.QtCore import QMetaObject, Qt, Q_ARG
 
 
 class QTextEditLogger(logging.Handler):
@@ -18,4 +9,13 @@ class QTextEditLogger(logging.Handler):
 
     def emit(self, record):
         msg = self.format(record)
-        self.text_edit.append(msg)
+        QMetaObject.invokeMethod(
+            self.text_edit,
+            "append",
+            Qt.QueuedConnection,
+            Q_ARG(str, msg)
+        )
+
+
+if __name__ == '__main__':
+    pass
