@@ -29,7 +29,7 @@ class YTDriver:
             self.video_id = video[video.index('www.youtube.com/watch?v=') + len('www.youtube.com/watch?v='):]
 
         except ValueError:
-            logging.warning('URL invalid. Please make sure URL format is one of the below:'
+            logging.info('URL invalid. Please make sure URL format is one of the below:'
                   '\n"https://www.youtube.com/watch?v=<VIDEO_ID>"'
                   '\n"http://www.youtube.com/watch?v=<VIDEO_ID>"'
                   '\n"www.youtube.com/watch?v=<VIDEO_ID>"')
