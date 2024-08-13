@@ -5,6 +5,10 @@ Description:
 -------------
 This program scrapes YouTube video comments, replies, and user information using the YouTube Data API. The outputs are written to two Excel files in the same directory as the executable.
 
+Version Bug Fixes:
+-------------
+V.0.1 - Fixed GUI from freezing while scraper was running.
+
 Prerequisites:
 --------------
 1. YouTube Data API Key
