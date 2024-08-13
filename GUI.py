@@ -3,7 +3,6 @@ from PyQt5 import uic
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QThread
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from time import time
 from worker import Worker
 from logger_config import QTextEditLogger
 
@@ -55,16 +54,11 @@ class MyGUI(QMainWindow):
         self.scrape_button.setEnabled(False)  # Disable button while worker thread is functioning.
 
     def scrape(self):
-        start = time()
-
         logging.info(f'This is api key inserted by user: {self.api_key.text()}.')
         logging.info(f'This is video url inserted by user: {self.video_url.text()}.')
 
         # Start working thread.
         self.thread_start()
-
-        end = time()
-        logging.info(f'Done - Process ran for {"{:.2f}".format((end - start) / 60)} minutes.')
 
     def log_message(self, message):
         logging.info(message)
